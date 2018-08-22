@@ -25,6 +25,7 @@ public abstract class Pessoa {
     private LocalDate dataNascimento;
 
     @NotEmpty
+    @Enumerated(EnumType.STRING)
     @Column(name = "sexo")
     private Enum<Sexo> sexoEnum;
 

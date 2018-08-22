@@ -2,7 +2,11 @@ package br.com.unopar.fisiopar.domains.pessoa;
 
 public enum EstadoCivil {
 
-    SOLTEIRO("1"), CASADO("2"), VIUVO("3"), DIVORCIADO("4"), SEPARADO("5");
+    SOLTEIRO("Solteiro(a)"),
+    CASADO("Casado(a)"),
+    VIUVO("Viuvo(a)"),
+    DIVORCIADO("Divorciado(a)"),
+    SEPARADO("Separado(a)");
 
     private String estadoCivil;
 

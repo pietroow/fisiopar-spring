@@ -1,15 +1,16 @@
 package br.com.unopar.fisiopar.domains.pessoa;
 
-import javax.persistence.*;
-import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "endereco")
 public class Endereco {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private EntityId id;
 
     @Column(name = "logradouro")
     private String logradouro;

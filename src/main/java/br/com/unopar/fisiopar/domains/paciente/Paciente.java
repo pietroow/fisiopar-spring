@@ -1,6 +1,5 @@
-package br.com.unopar.fisiopar.domains.pessoa.paciente;
+package br.com.unopar.fisiopar.domains.paciente;
 
-import br.com.unopar.fisiopar.domains.pessoa.Convenio;
 import br.com.unopar.fisiopar.domains.pessoa.Pessoa;
 
 import javax.persistence.Column;
@@ -12,7 +11,7 @@ import javax.persistence.Table;
 public class Paciente extends Pessoa {
 
     @Column(name = "convenio")
-    private Enum<Convenio> convenioEnum;
+    private String convenioEnum;
 
     @Column(name = "observacoes")
     private String observacoes;

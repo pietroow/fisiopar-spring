@@ -1,4 +1,4 @@
-package br.com.unopar.fisiopar.domains.pessoa.aluno;
+package br.com.unopar.fisiopar.domains.aluno;
 
 import br.com.unopar.fisiopar.domains.pessoa.Pessoa;
 

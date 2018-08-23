@@ -1,6 +1,6 @@
 package br.com.unopar.fisiopar.domains.aluno;
 
-import br.com.unopar.fisiopar.domains.pessoa.*;
+import br.com.unopar.fisiopar.domains.pessoafisica.*;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.Column;
@@ -13,10 +13,13 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "aluno")
-public class Aluno extends Pessoa {
+public class Aluno extends PessoaFisica {
 
     @Column(name = "ra")
     private String ra;
+
+//    @Column(name = "curso")
+//    private Curso curso;
 
     @Column(name = "curso")
     private String curso;
@@ -24,34 +27,51 @@ public class Aluno extends Pessoa {
     @Column(name = "coordenador")
     private String coordenador;
 
-    public Aluno(EntityId id,
-                 Long matricula,
-                 @NotEmpty String nome,
+    private Aluno() {
+    }
+
+    public Aluno(@NotEmpty String nome,
                  @NotEmpty LocalDate dataNascimento,
-                 @NotEmpty Enum<Sexo> sexoEnum,
-                 @NotEmpty Enum<EstadoCivil> estadoCivilEnum,
-                 @NotEmpty Enum<Etnia> etniaEnum,
+                 @NotEmpty Genero genero,
+                 @NotEmpty EstadoCivil estadoCivil,
+                 @NotEmpty Etnia etnia,
                  @CPF @NotEmpty String cpf,
                  @NotEmpty String rg,
                  @NotEmpty String nomeResponsavel,
                  @NotEmpty String nomeDaMae,
                  @Email @NotEmpty String email,
                  @NotEmpty @Digits(fraction = 0, integer = 11) String telefone,
-                 @NotEmpty Endereco endereco) {
-        super(
-                id,
-                matricula,
-                nome,
-                dataNascimento,
-                sexoEnum,
-                estadoCivilEnum,
-                etniaEnum,
-                cpf,
-                rg,
-                nomeResponsavel,
-                nomeDaMae,
-                email,
-                telefone,
-                endereco);
+                 String ra,
+//                 Curso curso,
+                 String curso,
+                 String coordenador) {
+        super(nome, dataNascimento, genero, estadoCivil, etnia, cpf, rg, nomeResponsavel, nomeDaMae, email, telefone);
+        this.ra = ra;
+        this.curso = curso;
+        this.coordenador = coordenador;
+    }
+
+    public String getRa() {
+        return ra;
+    }
+
+    public void setRa(String ra) {
+        this.ra = ra;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String getCoordenador() {
+        return coordenador;
+    }
+
+    public void setCoordenador(String coordenador) {
+        this.coordenador = coordenador;
     }
 }

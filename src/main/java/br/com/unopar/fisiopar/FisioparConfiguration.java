@@ -1,5 +1,6 @@
-package br.com.unopar.fisiopar.runner;
+package br.com.unopar.fisiopar;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,9 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @Configuration
-@EnableJpaRepositories(basePackages = "br.com.unopar")
-@ComponentScan(basePackages = "br.com.unopar")
-@EntityScan(basePackages = "br.com.unopar.domains")
+@EnableAutoConfiguration
 public class FisioparConfiguration {
 
     @Bean
@@ -25,3 +24,4 @@ public class FisioparConfiguration {
                 .build();
     }
 }
+

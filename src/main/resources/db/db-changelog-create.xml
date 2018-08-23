@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <!-- ====================================================================================== -->
+
+    <changeSet id="createTablePessoaFisica" author="pietro">
+        <createTable tableName="pessoa_fisica">
+
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" primaryKeyName="pessoa_fisica_id_pk"/>
+            </column>
+            <column name="tipo" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <!-- ====================================================================================== -->
+
+    <changeSet id="createTableFisioterapeuta" author="pietro">
+        <createTable tableName="fisioterapeuta">
+            <column name="id" type="uuid">
+                <constraints
+                        primaryKey="true"
+                        primaryKeyName="fisioterapeuta_id_pk"
+                        foreignKeyName="fisioterapeuta_id_fk"
+                        referencedTableName="pessoa_fisica"
+                        referencedColumnNames="id"/>
+            </column>
+            <column name="matricula" type="int(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_nascimento" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sexo" type="varchar(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estado_civil" type="varchar(13)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="etnia" type="varchar(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cpf" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rg" type="varchar(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome_responsavel" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome_mae" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telefone" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="especialidade" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="crefito" type="varchar(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="boolean" defaultValueBoolean="true"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ====================================================================================== -->
+
+    <changeSet id="createTableAluno" author="pietro">
+        <createTable tableName="aluno">
+            <column name="id" type="uuid">
+                <constraints
+                        primaryKey="true"
+                        primaryKeyName="aluno_id_pk"
+                        foreignKeyName="aluno_id_fk"
+                        referencedTableName="pessoa_fisica"
+                        referencedColumnNames="id"/>
+            </column>
+            <column name="matricula" type="int(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_nascimento" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sexo" type="varchar(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estado_civil" type="varchar(13)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="etnia" type="varchar(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cpf" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rg" type="varchar(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome_responsavel" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome_mae" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telefone" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ra" type="char(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="curso" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="coordenador" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ====================================================================================== -->
+
+    <changeSet id="createTablePaciente" author="pietro">
+        <createTable tableName="paciente">
+            <column name="id" type="uuid">
+                <constraints
+                        primaryKey="true"
+                        primaryKeyName="paciente_id_pk"
+                        foreignKeyName="paciente_id_fk"
+                        referencedTableName="pessoa_fisica"
+                        referencedColumnNames="id"/>
+            </column>
+            <column name="matricula" type="int(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_nascimento" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sexo" type="varchar(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estado_civil" type="varchar(13)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="etnia" type="varchar(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cpf" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rg" type="varchar(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome_responsavel" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome_mae" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telefone" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="convenio" type="char(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cartao_sus" type="char(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="coordenador" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ====================================================================================== -->
+
+    <!--<changeSet id="createTableEndereco" author="pietro">-->
+        <!--<createTable tableName="endereco">-->
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints-->
+                        <!--primaryKey="true"-->
+                        <!--primaryKeyName="endereco_id_pk"-->
+                        <!--foreignKeyName="fisioterapeuta_id_fk"-->
+                        <!--referencedTableName="pessoa_fisica"-->
+                        <!--referencedColumnNames="id"/>-->
+            <!--</column>-->
+
+            <!--<column name="logradouro" type="varchar(200)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="numero" type="int">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="bairro" type="varchar(50)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="estado" type="varchar(19)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="cidade" type="char(28)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="coordenador" type="varchar(100)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
+
+    <!-- ====================================================================================== -->
+
+    <changeSet id="createTableCurso" author="pietro">
+        <createTable tableName="curso">
+            <column name="logradouro" type="varchar(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bairro" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estado" type="varchar(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cidade" type="char(28)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="coordenador" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,9 +1,10 @@
 package br.com.unopar.fisiopar.domains.paciente;
 
-import br.com.unopar.fisiopar.domains.pessoa.*;
+import br.com.unopar.fisiopar.domains.pessoafisica.*;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
@@ -13,10 +14,11 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "paciente")
-public class Paciente extends Pessoa {
+@DiscriminatorValue("PACIENTE")
+public class Paciente extends PessoaFisica {
 
     @Column(name = "convenio")
-    private String convenioEnum;
+    private String convenio;
 
     @Column(name = "cartao_sus")
     private Long cartaoSus;
@@ -24,60 +26,25 @@ public class Paciente extends Pessoa {
     @Column(name = "observacoes")
     private String observacoes;
 
+    private Paciente() {
+    }
 
-    public Paciente(EntityId id,
-                    Long matricula,
-                    @NotEmpty String nome,
+    public Paciente(@NotEmpty String nome,
                     @NotEmpty LocalDate dataNascimento,
-                    @NotEmpty Enum<Sexo> sexoEnum,
-                    @NotEmpty Enum<EstadoCivil> estadoCivilEnum,
-                    @NotEmpty Enum<Etnia> etniaEnum,
+                    @NotEmpty Genero genero,
+                    @NotEmpty EstadoCivil estadoCivil,
+                    @NotEmpty Etnia etnia,
                     @CPF @NotEmpty String cpf,
                     @NotEmpty String rg,
                     @NotEmpty String nomeResponsavel,
                     @NotEmpty String nomeDaMae,
                     @Email @NotEmpty String email,
                     @NotEmpty @Digits(fraction = 0, integer = 11) String telefone,
-                    @NotEmpty Endereco endereco) {
-        super(
-                id,
-                matricula,
-                nome,
-                dataNascimento,
-                sexoEnum,
-                estadoCivilEnum,
-                etniaEnum,
-                cpf,
-                rg,
-                nomeResponsavel,
-                nomeDaMae,
-                email,
-                telefone,
-                endereco
-        );
-    }
-
-    public String getConvenioEnum() {
-        return convenioEnum;
-    }
-
-    public void setConvenioEnum(String convenioEnum) {
-        this.convenioEnum = convenioEnum;
-    }
-
-    public Long getCartaoSus() {
-        return cartaoSus;
-    }
-
-    public void setCartaoSus(Long cartaoSus) {
+                    String convenio, Long cartaoSus,
+                    String observacoes) {
+        super(nome, dataNascimento, genero, estadoCivil, etnia, cpf, rg, nomeResponsavel, nomeDaMae, email, telefone);
+        this.convenio = convenio;
         this.cartaoSus = cartaoSus;
-    }
-
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
     }
 }

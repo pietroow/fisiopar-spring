@@ -8,6 +8,6 @@ services:
     ports:
     - 5432:5432
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: rootpass
+      POSTGRES_USER: fisiopar
+      POSTGRES_PASSWORD: ads@00
       POSTGRES_DB: fisiopar

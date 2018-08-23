@@ -1,13 +1,13 @@
-package br.com.unopar.fisiopar.domains.pessoa;
+package br.com.unopar.fisiopar.domains.pessoafisica;
 
-public enum Sexo {
+public enum Genero {
 
     MASCULINO("Masculino"),
     FEMININO("Feminino");
 
     private String sexo;
 
-    Sexo(String sexo) {
+    Genero(String sexo) {
         this.sexo = sexo;
     }
 

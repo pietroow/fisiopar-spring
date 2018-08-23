@@ -7,8 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/paciente")
 public class PacienteController {
 
@@ -16,7 +17,7 @@ public class PacienteController {
     PacienteRepository pacienteRepository;
 
     @PostMapping
-    public ResponseEntity criar(@RequestBody Paciente paciente) {
+    public ResponseEntity cadastrar(@RequestBody Paciente paciente) {
         this.pacienteRepository.save(paciente);
         return new ResponseEntity(paciente, HttpStatus.CREATED);
     }

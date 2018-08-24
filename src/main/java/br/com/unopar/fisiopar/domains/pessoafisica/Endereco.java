@@ -31,7 +31,8 @@ public class Endereco extends BaseEntity {
     @Column(name = "cep")
     private String CEP;
 
-    //TODO
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id")
     private PessoaFisica pessoaFisica;
 
     public Endereco() {
@@ -43,7 +44,8 @@ public class Endereco extends BaseEntity {
                     String estado,
                     String cidade,
                     String complemento,
-                    String CEP) {
+                    String CEP,
+                    PessoaFisica pessoaFisica) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.bairro = bairro;
@@ -51,6 +53,7 @@ public class Endereco extends BaseEntity {
         this.cidade = cidade;
         this.complemento = complemento;
         this.CEP = CEP;
+        this.pessoaFisica = pessoaFisica;
     }
 
     public String getLogradouro() {

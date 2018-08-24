@@ -11,6 +11,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "paciente")
@@ -27,24 +28,31 @@ public class Paciente extends PessoaFisica {
     private String observacoes;
 
     private Paciente() {
+        super();
+        System.out.println("Construtor 'Paciente' chamando super 'PessoaFisica'");
     }
 
-    public Paciente(@NotEmpty String nome,
-                    @NotEmpty LocalDate dataNascimento,
-                    @NotEmpty Genero genero,
-                    @NotEmpty EstadoCivil estadoCivil,
-                    @NotEmpty Etnia etnia,
-                    @CPF @NotEmpty String cpf,
-                    @NotEmpty String rg,
-                    @NotEmpty String nomeResponsavel,
-                    @NotEmpty String nomeDaMae,
-                    @Email @NotEmpty String email,
-                    @NotEmpty @Digits(fraction = 0, integer = 11) String telefone,
-                    String convenio, Long cartaoSus,
-                    String observacoes) {
-        super(nome, dataNascimento, genero, estadoCivil, etnia, cpf, rg, nomeResponsavel, nomeDaMae, email, telefone);
+    public String getConvenio() {
+        return convenio;
+    }
+
+    public void setConvenio(String convenio) {
         this.convenio = convenio;
+    }
+
+    public Long getCartaoSus() {
+        return cartaoSus;
+    }
+
+    public void setCartaoSus(Long cartaoSus) {
         this.cartaoSus = cartaoSus;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
     }
 }

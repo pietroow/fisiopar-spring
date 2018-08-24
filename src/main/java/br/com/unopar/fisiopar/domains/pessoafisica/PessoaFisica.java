@@ -1,12 +1,12 @@
 package br.com.unopar.fisiopar.domains.pessoafisica;
 
 import br.com.unopar.fisiopar.domains.BaseEntity;
-import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -16,29 +16,25 @@ import java.time.LocalDate;
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 public abstract class PessoaFisica extends BaseEntity implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "matricula")
-    private Long matricula;
-
     @NotEmpty
     @Column(name = "nome")
     private String nome;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @NotEmpty
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "genero")
     private Genero genero;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "estado_civil")
     @Enumerated(EnumType.STRING)
     private EstadoCivil estadoCivil;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "etnia")
     @Enumerated(EnumType.STRING)
     private Etnia etnia;
@@ -68,36 +64,11 @@ public abstract class PessoaFisica extends BaseEntity implements Serializable {
     @Column(name = "telefone")
     private String telefone;
 
-    protected PessoaFisica() {
+    public PessoaFisica() {
+        super();
+        System.out.println("Construtor chamando super 'PessoaFisica'");
     }
 
-    public PessoaFisica(@NotEmpty String nome,
-                        @NotEmpty LocalDate dataNascimento,
-                        @NotEmpty Genero genero,
-                        @NotEmpty EstadoCivil estadoCivil,
-                        @NotEmpty Etnia etnia,
-                        @CPF @NotEmpty String cpf,
-                        @NotEmpty String rg,
-                        @NotEmpty String nomeResponsavel,
-                        @NotEmpty String nomeDaMae,
-                        @Email @NotEmpty String email,
-                        @NotEmpty @Digits(fraction = 0, integer = 11) String telefone) {
-        this.nome = nome;
-        this.dataNascimento = dataNascimento;
-        this.genero = genero;
-        this.estadoCivil = estadoCivil;
-        this.etnia = etnia;
-        this.cpf = cpf;
-        this.rg = rg;
-        this.nomeResponsavel = nomeResponsavel;
-        this.nomeDaMae = nomeDaMae;
-        this.email = email;
-        this.telefone = telefone;
-    }
-
-    public Long getMatricula() {
-        return matricula;
-    }
 
     public String getNome() {
         return nome;

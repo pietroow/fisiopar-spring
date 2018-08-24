@@ -1,5 +1,7 @@
 package br.com.unopar.fisiopar.domains.pessoafisica;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum Genero {
 
     MASCULINO("Masculino"),
@@ -11,6 +13,7 @@ public enum Genero {
         this.sexo = sexo;
     }
 
+    @JsonValue
     String getSexo() {
         return sexo;
     }

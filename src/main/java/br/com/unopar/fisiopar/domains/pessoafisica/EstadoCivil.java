@@ -1,5 +1,7 @@
 package br.com.unopar.fisiopar.domains.pessoafisica;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum EstadoCivil {
 
     SOLTEIRO("Solteiro(a)"),
@@ -14,6 +16,7 @@ public enum EstadoCivil {
         this.estadoCivil = estadoCivil;
     }
 
+    @JsonValue
     String getEstadoCivil(){
         return estadoCivil;
     }

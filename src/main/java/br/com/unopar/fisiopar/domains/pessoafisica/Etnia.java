@@ -1,5 +1,7 @@
 package br.com.unopar.fisiopar.domains.pessoafisica;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum Etnia {
 
     INDIGENA("Indígena"),
@@ -14,6 +16,7 @@ public enum Etnia {
         this.etnia = etnia;
     }
 
+    @JsonValue
     String getEtnia(){
         return etnia;
     }

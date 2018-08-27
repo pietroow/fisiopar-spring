@@ -1,20 +1,24 @@
 package br.com.unopar.fisiopar.domains.pessoafisica;
 
 import br.com.unopar.fisiopar.domains.BaseEntity;
+import br.com.unopar.fisiopar.domains.documento.Documento;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "pessoa_fisica")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
-public abstract class PessoaFisica extends BaseEntity implements Serializable {
+public abstract class PessoaFisica extends BaseEntity {
 
     @NotEmpty
     @Column(name = "nome")
@@ -39,14 +43,6 @@ public abstract class PessoaFisica extends BaseEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private Etnia etnia;
 
-    @NotEmpty
-    @Column(name = "cpf")
-    private String cpf;
-
-    @NotEmpty
-    @Column(name = "rg")
-    private String rg;
-
     @Column(name = "nome_responsavel")
     private String nomeResponsavel;
 
@@ -59,13 +55,22 @@ public abstract class PessoaFisica extends BaseEntity implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @NotEmpty
-    @Digits(fraction = 0, integer = 11)
-    @Column(name = "telefone")
-    private String telefone;
+    @CollectionTable(joinColumns = @JoinColumn(name = "pessoa_id"), name = "pessoa_endereco")
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<EnderecoVO> enderecos;
+
+    @CollectionTable(joinColumns = @JoinColumn(name = "pessoa_id"), name = "pessoa_telefone")
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<TelefoneVO> telefones;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "pessoa")
+    private List<Documento> documentos;
 
     public PessoaFisica() {
         super();
+        this.enderecos = Sets.newHashSet();
+        this.telefones = Sets.newHashSet();
+        this.documentos = Lists.newArrayList();
         System.out.println("Construtor chamando super 'PessoaFisica'");
     }
 
@@ -90,14 +95,6 @@ public abstract class PessoaFisica extends BaseEntity implements Serializable {
         return etnia;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public String getRg() {
-        return rg;
-    }
-
     public String getNomeResponsavel() {
         return nomeResponsavel;
     }
@@ -110,8 +107,12 @@ public abstract class PessoaFisica extends BaseEntity implements Serializable {
         return email;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public Set<EnderecoVO> getEnderecos() {
+        return Collections.unmodifiableSet(enderecos);
+    }
+
+    public Set<TelefoneVO> getTelefones() {
+        return Collections.unmodifiableSet(telefones);
     }
 
     public void setNome(String nome) {
@@ -134,14 +135,6 @@ public abstract class PessoaFisica extends BaseEntity implements Serializable {
         this.etnia = etnia;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
-
     public void setNomeResponsavel(String nomeResponsavel) {
         this.nomeResponsavel = nomeResponsavel;
     }
@@ -154,8 +147,19 @@ public abstract class PessoaFisica extends BaseEntity implements Serializable {
         this.email = email;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setEnderecos(Set<EnderecoVO> enderecos) {
+        this.enderecos = enderecos;
     }
 
+    public void setTelefones(Set<TelefoneVO> telefones) {
+        this.telefones = telefones;
+    }
+
+    public List<Documento> getDocumentos() {
+        return documentos;
+    }
+
+    public void setDocumentos(List<Documento> documentos) {
+        this.documentos = documentos;
+    }
 }

@@ -1,14 +1,19 @@
 package br.com.unopar.fisiopar.domains;
 
-import javax.persistence.*;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 import java.util.UUID;
 
 @MappedSuperclass
-public abstract class BaseEntity {
+public abstract class BaseEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
+    @ApiModelProperty(hidden = true)
     private UUID id;
 
     public BaseEntity() {

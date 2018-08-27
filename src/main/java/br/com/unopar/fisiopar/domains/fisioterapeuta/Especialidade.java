@@ -2,10 +2,8 @@ package br.com.unopar.fisiopar.domains.fisioterapeuta;
 
 import br.com.unopar.fisiopar.domains.BaseEntity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "fisioterapeuta_especialidade")

@@ -38,4 +38,11 @@ public class Paciente extends PessoaFisica {
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
     }
+
+    public static Paciente createWith(PacienteDTO pacienteDTO) {
+        Paciente paciente = new Paciente();
+        paciente.setConvenio(pacienteDTO.convenio);
+
+        return paciente;
+    }
 }

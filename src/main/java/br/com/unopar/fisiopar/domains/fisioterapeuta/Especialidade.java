@@ -1,39 +1,37 @@
-package br.com.unopar.fisiopar.domains.fisioterapeuta;
-
-import br.com.unopar.fisiopar.domains.BaseEntity;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "fisioterapeuta_especialidade")
-public class Especialidade extends BaseEntity {
+//package br.com.unopar.fisiopar.domains.fisioterapeuta;
 //
-//    @NotNull
-//    @Column(name = "descricao")
-//    private String descricao;
-
-}
-
-
+//import javax.persistence.Entity;
+//import javax.persistence.Table;
 //
-//enum Especialidade {
-//
-//    ORTOPEDIA("Ortopedia"),
-//    CARDIOVASCULAR("Cardiovascular"),
-//    PNEUMOFUNCIONAL("Pneumofuncional"),
-//    PEDIATRIA("Pediatria"),
-//    NEUROFUNCIONAL("Neurofuncional"),
-//    GINECOLOGIA("Ginecologia");
-//
-//    private String especialidade;
-//
-//    Especialidade(String especialidade) {
-//        this.especialidade = especialidade;
-//    }
-//
-//    String getEspecialidade() {
-//        return especialidade;
-//    }
+//@Entity
+//@Table(name = "fisioterapeuta_especialidade")
+//public class Especialidade {
+////
+////    @NotNull
+////    @Column(name = "descricao")
+////    private String descricao;
 //
 //}
+//
+//
+////
+////enum Especialidade {
+////
+////    ORTOPEDIA("Ortopedia"),
+////    CARDIOVASCULAR("Cardiovascular"),
+////    PNEUMOFUNCIONAL("Pneumofuncional"),
+////    PEDIATRIA("Pediatria"),
+////    NEUROFUNCIONAL("Neurofuncional"),
+////    GINECOLOGIA("Ginecologia");
+////
+////    private String especialidade;
+////
+////    Especialidade(String especialidade) {
+////        this.especialidade = especialidade;
+////    }
+////
+////    String getEspecialidade() {
+////        return especialidade;
+////    }
+////
+////}

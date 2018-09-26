@@ -1,16 +1,16 @@
 package br.com.unopar.fisiopar.domains.pessoafisica;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Objects;
 import java.util.UUID;
 
 @Embeddable
 public class TelefoneVO {
 
-    @Id
-    @JsonIgnore
+    @Column(name = "id")
     private UUID id;
 
     @Column(name = "numero")
@@ -23,7 +23,7 @@ public class TelefoneVO {
     @Column(name = "tipo")
     private TelefoneType telefoneType;
 
-    public TelefoneVO() {
+    private TelefoneVO() {
         this.id = UUID.randomUUID();
     }
 

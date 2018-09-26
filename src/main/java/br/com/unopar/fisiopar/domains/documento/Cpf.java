@@ -15,7 +15,7 @@ public class Cpf extends Documento {
 
     @CPF
     @Override
-    public String getValue() {
-        return super.getValue();
+    public String getNumero() {
+        return super.getNumero();
     }
 }

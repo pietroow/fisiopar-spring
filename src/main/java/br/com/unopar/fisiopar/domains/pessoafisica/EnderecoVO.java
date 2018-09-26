@@ -1,23 +1,17 @@
 package br.com.unopar.fisiopar.domains.pessoafisica;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
-import java.util.Objects;
 import java.util.UUID;
 
 @Embeddable
 public class EnderecoVO {
 
-    @Id
     @Column(name = "id")
     private UUID id;
 
     @Column(name = "logradouro")
     private String logradouro;
-
 
     @Column(name = "numero")
     private String numero;
@@ -41,7 +35,13 @@ public class EnderecoVO {
         this.id = UUID.randomUUID();
     }
 
-    public EnderecoVO(String logradouro, String numero, String bairro, String uf, String cidade, String complemento, String cep) {
+    public EnderecoVO(String logradouro,
+                      String numero,
+                      String bairro,
+                      String uf,
+                      String cidade,
+                      String complemento,
+                      String cep) {
         this();
         this.logradouro = logradouro;
         this.numero = numero;
@@ -80,23 +80,36 @@ public class EnderecoVO {
         return cep;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EnderecoVO that = (EnderecoVO) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(logradouro, that.logradouro) &&
-                Objects.equals(numero, that.numero) &&
-                Objects.equals(bairro, that.bairro) &&
-                Objects.equals(uf, that.uf) &&
-                Objects.equals(cidade, that.cidade) &&
-                Objects.equals(complemento, that.complemento) &&
-                Objects.equals(cep, that.cep);
+    public UUID getId() {
+        return id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, logradouro, numero, bairro, uf, cidade, complemento, cep);
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
 }

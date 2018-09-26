@@ -1,30 +1,39 @@
 package br.com.unopar.fisiopar.domains.pessoafisica;
 
-import br.com.unopar.fisiopar.domains.BaseEntity;
 import br.com.unopar.fisiopar.domains.documento.Documento;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import io.swagger.annotations.ApiModelProperty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "pessoa_fisica")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
-public abstract class PessoaFisica extends BaseEntity {
+public abstract class PessoaFisica {
+
+    @Id
+    @Column(name = "id")
+    @ApiModelProperty(hidden = true)
+    private UUID id;
 
     @NotEmpty
     @Column(name = "nome")
     private String nome;
 
     @NotNull
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
@@ -63,17 +72,20 @@ public abstract class PessoaFisica extends BaseEntity {
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<TelefoneVO> telefones;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "pessoa")
-    private List<Documento> documentos;
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Documento> documentos;
 
     public PessoaFisica() {
-        super();
+        this.id = UUID.randomUUID();
         this.enderecos = Sets.newHashSet();
         this.telefones = Sets.newHashSet();
-        this.documentos = Lists.newArrayList();
+        this.documentos = Sets.newHashSet();
         System.out.println("Construtor chamando super 'PessoaFisica'");
     }
 
+    public UUID getId() {
+        return id;
+    }
 
     public String getNome() {
         return nome;
@@ -108,12 +120,14 @@ public abstract class PessoaFisica extends BaseEntity {
     }
 
     public Set<EnderecoVO> getEnderecos() {
-        return Collections.unmodifiableSet(enderecos);
+        return enderecos;
     }
 
     public Set<TelefoneVO> getTelefones() {
-        return Collections.unmodifiableSet(telefones);
+        return telefones;
     }
+
+    public Set<Documento> getDocumentos(){ return documentos; }
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -155,11 +169,6 @@ public abstract class PessoaFisica extends BaseEntity {
         this.telefones = telefones;
     }
 
-    public List<Documento> getDocumentos() {
-        return documentos;
-    }
+    public void setDocumentos(Set<Documento> documentos){ this.documentos = documentos; }
 
-    public void setDocumentos(List<Documento> documentos) {
-        this.documentos = documentos;
-    }
 }

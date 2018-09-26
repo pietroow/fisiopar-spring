@@ -1,7 +1,11 @@
 package br.com.unopar.fisiopar.domains.paciente;
 
-import br.com.unopar.fisiopar.domains.documento.Documento;
-import br.com.unopar.fisiopar.domains.pessoafisica.*;
+import br.com.unopar.fisiopar.domains.pessoafisica.EnderecoVO;
+import br.com.unopar.fisiopar.domains.pessoafisica.EstadoCivil;
+import br.com.unopar.fisiopar.domains.pessoafisica.Etnia;
+import br.com.unopar.fisiopar.domains.pessoafisica.Genero;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,10 +21,55 @@ public final class PacienteDTO {
     public String nomeResponsavel;
     public String nomeDaMae;
     public String email;
-    public Set<EnderecoDTO> enderecos;
-    public Set<TelefoneVO> telefones;
-    public List<Documento> documentos;
+    public List<EnderecoVO> endereco;
     public String convenio;
     public String observacoes;
 
+    public PacienteDTO() {
+        endereco = Lists.newArrayList();
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public EstadoCivil getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public Etnia getEtnia() {
+        return etnia;
+    }
+
+    public String getNomeResponsavel() {
+        return nomeResponsavel;
+    }
+
+    public String getNomeDaMae() {
+        return nomeDaMae;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public List<EnderecoVO> getEndereco() {
+        return endereco;
+    }
+
+    public String getConvenio() {
+        return convenio;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
 }

@@ -58,12 +58,10 @@
 
     <changeSet id="createTableEnderecoPessoaFisica" author="pietro">
         <createTable tableName="pessoa_endereco">
-            <column name="id" type="uuid">
-                <constraints
-                        primaryKey="true"
-                        primaryKeyName="pessoa_endereco_id_pk"/>
-            </column>
 
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" primaryKeyName="pessoa_endereco_id_pk"/>
+            </column>
             <column name="cep" type="char(8)">
                 <constraints nullable="false"/>
             </column>
@@ -122,6 +120,7 @@
         </createTable>
     </changeSet>
 
+    <!-- ====================================================================================== -->
 
     <changeSet id="createTableDocumento" author="pietro">
         <createTable tableName="documento">
@@ -131,8 +130,8 @@
             <column name="tipo" type="varchar(20)">
                 <constraints nullable="false"/>
             </column>
-            <column name="value" type="varchar(25)">
-                <constraints nullable="false"/>
+            <column name="numero" type="varchar(25)">
+                <constraints nullable="false" unique="true"/>
             </column>
             <column name="pessoa_id" type="uuid">
                 <constraints
@@ -143,7 +142,6 @@
             </column>
         </createTable>
     </changeSet>
-
 
     <changeSet id="createTableDocumentoCpf" author="pietro">
         <createTable tableName="documento_cpf">
@@ -157,7 +155,6 @@
             </column>
         </createTable>
     </changeSet>
-
 
     <changeSet id="createTableDocumentoCartaoSus" author="pietro">
         <createTable tableName="documento_cartao_sus">
@@ -255,8 +252,6 @@
 
             <column name="observacoes" type="text"/>
 
-            <column name="active" type="boolean" defaultValueBoolean="true"/>
-
         </createTable>
     </changeSet>
 
@@ -270,6 +265,7 @@
             </column>
         </createTable>
     </changeSet>
+
 
 
 </databaseChangeLog>

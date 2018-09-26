@@ -1,12 +1,14 @@
 package br.com.unopar.fisiopar.domains.documento;
 
-import br.com.unopar.fisiopar.domains.BaseEntity;
 import br.com.unopar.fisiopar.domains.pessoafisica.PessoaFisica;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "documento")
@@ -21,26 +23,31 @@ import javax.persistence.*;
         @JsonSubTypes.Type(value = CartaoSus.class, name = "CARTAO_SUS"),
         @JsonSubTypes.Type(value = Rg.class, name = "RG")
 })
-@ApiModel(subTypes = { Cpf.class, Rg.class, CartaoSus.class }, discriminator = "tipo")
-public abstract class Documento extends BaseEntity {
+@ApiModel(subTypes = {Cpf.class, Rg.class, CartaoSus.class}, discriminator = "tipo")
+public abstract class Documento {
 
-    @Column(name = "value")
-    private String value;
+    @Id
+    @Column(name = "id")
+    @ApiModelProperty(hidden = true)
+    private UUID id;
+
+    @Column(name = "numero")
+    private String numero;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pessoa_id")
     private PessoaFisica pessoa;
 
     public Documento() {
-        super();
+        this.id = UUID.randomUUID();
     }
 
-    public String getValue() {
-        return value;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public void setPessoa(PessoaFisica pessoa) {
@@ -51,5 +58,6 @@ public abstract class Documento extends BaseEntity {
     public PessoaFisica getPessoa() {
         return pessoa;
     }
+
 }
 

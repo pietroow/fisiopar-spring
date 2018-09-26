@@ -20,7 +20,6 @@ public class Paciente extends PessoaFisica {
 
     private Paciente() {
         super();
-        System.out.println("Construtor 'Paciente' chamando super 'PessoaFisica'");
     }
 
     public String getConvenio() {
@@ -39,10 +38,4 @@ public class Paciente extends PessoaFisica {
         this.observacoes = observacoes;
     }
 
-    public static Paciente createWith(PacienteDTO pacienteDTO) {
-        Paciente paciente = new Paciente();
-        paciente.setConvenio(pacienteDTO.convenio);
-
-        return paciente;
-    }
 }

@@ -10,4 +10,5 @@ public class CartaoSus extends Documento {
     private CartaoSus() {
         super();
     }
+
 }

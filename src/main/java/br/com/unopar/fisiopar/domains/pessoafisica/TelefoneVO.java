@@ -1,5 +1,7 @@
 package br.com.unopar.fisiopar.domains.pessoafisica;
 
+import br.com.unopar.fisiopar.domains.pessoafisica.enums.TelefoneType;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;

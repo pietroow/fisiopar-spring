@@ -1,15 +1,13 @@
 package br.com.unopar.fisiopar.domains.paciente;
 
 import br.com.unopar.fisiopar.domains.pessoafisica.EnderecoVO;
-import br.com.unopar.fisiopar.domains.pessoafisica.EstadoCivil;
-import br.com.unopar.fisiopar.domains.pessoafisica.Etnia;
-import br.com.unopar.fisiopar.domains.pessoafisica.Genero;
+import br.com.unopar.fisiopar.domains.pessoafisica.enums.EstadoCivil;
+import br.com.unopar.fisiopar.domains.pessoafisica.enums.Etnia;
+import br.com.unopar.fisiopar.domains.pessoafisica.enums.Genero;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public final class PacienteDTO {
 

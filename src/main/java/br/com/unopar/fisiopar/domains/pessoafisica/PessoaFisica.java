@@ -1,19 +1,19 @@
 package br.com.unopar.fisiopar.domains.pessoafisica;
 
-import br.com.unopar.fisiopar.domains.documento.Documento;
+import br.com.unopar.fisiopar.domains.pessoafisica.documento.Documento;
+import br.com.unopar.fisiopar.domains.pessoafisica.enums.EstadoCivil;
+import br.com.unopar.fisiopar.domains.pessoafisica.enums.Etnia;
+import br.com.unopar.fisiopar.domains.pessoafisica.enums.Genero;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Collections;
 import java.util.Set;
 import java.util.UUID;
 
@@ -120,14 +120,14 @@ public abstract class PessoaFisica {
     }
 
     public Set<EnderecoVO> getEnderecos() {
-        return enderecos;
+        return Collections.unmodifiableSet(enderecos);
     }
 
     public Set<TelefoneVO> getTelefones() {
-        return telefones;
+        return Collections.unmodifiableSet(telefones);
     }
 
-    public Set<Documento> getDocumentos(){ return documentos; }
+    public Set<Documento> getDocumentos(){ return Collections.unmodifiableSet(documentos); }
 
     public void setNome(String nome) {
         this.nome = nome;

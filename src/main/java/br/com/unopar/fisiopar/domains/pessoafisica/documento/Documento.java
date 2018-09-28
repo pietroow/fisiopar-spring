@@ -1,4 +1,4 @@
-package br.com.unopar.fisiopar.domains.documento;
+package br.com.unopar.fisiopar.domains.pessoafisica.documento;
 
 import br.com.unopar.fisiopar.domains.pessoafisica.PessoaFisica;
 import com.fasterxml.jackson.annotation.JsonIgnore;

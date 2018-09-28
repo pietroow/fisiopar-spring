@@ -1,5 +1,7 @@
 package br.com.unopar.fisiopar.domains.pessoafisica;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.UUID;
@@ -7,6 +9,7 @@ import java.util.UUID;
 @Embeddable
 public class EnderecoVO {
 
+    @ApiModelProperty(hidden = true)
     @Column(name = "id")
     private UUID id;
 

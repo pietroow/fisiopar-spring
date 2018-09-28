@@ -1,4 +1,4 @@
-package br.com.unopar.fisiopar.domains.pessoafisica;
+package br.com.unopar.fisiopar.domains.pessoafisica.enums;
 
 public enum Etnia {
 

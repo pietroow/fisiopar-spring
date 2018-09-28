@@ -1,4 +1,4 @@
-package br.com.unopar.fisiopar.domains.documento;
+package br.com.unopar.fisiopar.domains.pessoafisica.documento;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

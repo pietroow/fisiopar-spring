@@ -266,6 +266,38 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="createTableConsulta" author="jao">
+        <createTable tableName="consulta">
+
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" primaryKeyName="consulta_id_pk"/>
+            </column>
+
+            <column name="fisioterapeuta_id" type="uuid">
+                <constraints
+                        nullable="false"
+                        referencedTableName="fisioterapeuta"
+                        referencedColumnNames="id"
+                        foreignKeyName="fisioterapeuta_id_fk"/>
+            </column>
+
+            <column name="paciente_id" type="uuid">
+                <constraints
+                        nullable="false"
+                        referencedTableName="paciente"
+                        referencedColumnNames="id"
+                        foreignKeyName="paciente_id_fk"/>
+            </column>
+
+            <column name="data_consulta" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="diagnostico" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 
 
 </databaseChangeLog>

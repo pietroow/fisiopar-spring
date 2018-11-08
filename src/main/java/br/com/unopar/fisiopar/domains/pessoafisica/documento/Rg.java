@@ -10,5 +10,4 @@ public class Rg extends Documento{
     private Rg() {
         super();
     }
-
 }

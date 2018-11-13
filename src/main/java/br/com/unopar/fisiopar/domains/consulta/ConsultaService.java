@@ -7,6 +7,7 @@ import br.com.unopar.fisiopar.domains.paciente.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -28,5 +29,26 @@ public class ConsultaService {
         consulta.setFisioterapeuta(fisioterapeutaRecuperado.get());
         consulta.setPaciente(pacienteRecuperado.get());
         return this.consultaRepository.save(consulta);
+    }
+
+    public Optional<Consulta> findById(UUID id) {
+        Optional<Consulta> consultaRecuperada = consultaRepository.findById(id);
+        return consultaRecuperada;
+    }
+
+    public void deleteById(UUID id) {
+        consultaRepository.deleteById(id);
+    }
+
+    public Iterable<Consulta> findAll() {
+        Iterable<Consulta> consultas = consultaRepository.findAll();
+        return consultas;
+    }
+
+    public void alterarById(UUID id, Consulta consulta) {
+        Optional<Consulta> consultaRecuperada = consultaRepository.findById(id);
+        consultaRecuperada.get().setData(consulta.getData());
+        consultaRecuperada.get().setDiagnostico(consulta.getDiagnostico());
+        consultaRepository.save(consultaRecuperada.get());
     }
 }

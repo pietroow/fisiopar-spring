@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -21,5 +22,28 @@ public class ConsultaController {
         Consulta consultaCriada = this.consultaService.save(consulta, fisioterapeutaId, pacienteId);
         return new ResponseEntity<>(consultaCriada, HttpStatus.CREATED);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity findById(@PathVariable("id")UUID id){
+        Optional<Consulta> consultaRecuperada = consultaService.findById(id);
+        return new ResponseEntity<>(consultaRecuperada, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public Iterable<Consulta> findAll(){
+        return consultaService.findAll();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable("id")UUID id){
+        consultaService.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public void alterarById(@PathVariable("id")UUID id,
+                        @RequestBody Consulta consulta){
+        consultaService.alterarById(id, consulta);
+    }
+
 
 }

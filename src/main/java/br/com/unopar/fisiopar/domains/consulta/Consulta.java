@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -38,6 +39,9 @@ public class Consulta {
     @NotNull
     @Column(name = "diagnostico")
     private String diagnostico;
+
+    @Column(name = "sessao_id")
+    private Set<Sessao> sessoes;
 
     private Consulta (){
         id = UUID.randomUUID();

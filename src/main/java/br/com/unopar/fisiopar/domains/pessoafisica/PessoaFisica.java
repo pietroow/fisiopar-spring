@@ -80,7 +80,6 @@ public abstract class PessoaFisica {
         this.enderecos = Sets.newHashSet();
         this.telefones = Sets.newHashSet();
         this.documentos = Sets.newHashSet();
-        System.out.println("Construtor chamando super 'PessoaFisica'");
     }
 
     public UUID getId() {

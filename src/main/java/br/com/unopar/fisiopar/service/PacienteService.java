@@ -1,5 +1,7 @@
-package br.com.unopar.fisiopar.domains.paciente;
+package br.com.unopar.fisiopar.service;
 
+import br.com.unopar.fisiopar.domains.paciente.Paciente;
+import br.com.unopar.fisiopar.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,7 @@ public class PacienteService {
     private PacienteRepository pacienteRepository;
 
     public Paciente save(Paciente paciente) {
-        paciente.getDocumentos().forEach(documento -> documento.setPessoa(paciente));
+//        paciente.getDocumentos().forEach(documento -> documento.setPessoa(paciente));
         return pacienteRepository.save(paciente);
     }
 

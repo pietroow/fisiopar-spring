@@ -1,271 +1,302 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--&lt;!&ndash;<?xml version="1.0" encoding="UTF-8"?>&ndash;&gt;-->
 
-<!--<databaseChangeLog-->
-        <!--xmlns="http://www.liquibase.org/xml/ns/dbchangelog"-->
-        <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-        <!--xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-->
-        <!--http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">-->
-
-
-    <!-- ====================================================================================== -->
-
-    <changeSet id="createTablePessoaFisica" author="pietro">
-        <createTable tableName="pessoa_fisica">
-
-            <column name="id" type="uuid">
-                <constraints primaryKey="true" primaryKeyName="pessoa_fisica_id_pk"/>
-            </column>
-
-            <column name="tipo" type="varchar(30)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="nome" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="data_nascimento" type="date">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="genero" type="varchar(15)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="estado_civil" type="varchar(13)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="etnia" type="varchar(20)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="nome_responsavel" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="nome_mae" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="email" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
-
-        </createTable>
-    </changeSet>
+<!--&lt;!&ndash;<databaseChangeLog&ndash;&gt;-->
+        <!--&lt;!&ndash;xmlns="http://www.liquibase.org/xml/ns/dbchangelog"&ndash;&gt;-->
+        <!--&lt;!&ndash;xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&ndash;&gt;-->
+        <!--&lt;!&ndash;xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog&ndash;&gt;-->
+        <!--&lt;!&ndash;http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">&ndash;&gt;-->
 
 
-    <changeSet id="createTableEnderecoPessoaFisica" author="pietro">
-        <createTable tableName="pessoa_endereco">
+    <!--&lt;!&ndash; ====================================================================================== &ndash;&gt;-->
 
-            <column name="id" type="uuid">
-                <constraints primaryKey="true" primaryKeyName="pessoa_endereco_id_pk"/>
-            </column>
-            <column name="cep" type="char(8)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="logradouro" type="varchar(200)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="numero" type="varchar(20)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="bairro" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="uf" type="char(2)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="cidade" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="complemento" type="varchar(25)">
-                <constraints nullable="true"/>
-            </column>
-            <column name="pessoa_id" type="uuid">
-                <constraints
-                        nullable="false"
-                        referencedTableName="pessoa_fisica"
-                        referencedColumnNames="id"
-                        foreignKeyName="pessoa_endereco_pessoa_fk"/>
-            </column>
-        </createTable>
-    </changeSet>
+    <!--<changeSet id="createTablePessoaFisica" author="pietro">-->
+        <!--<createTable tableName="pessoa_fisica">-->
 
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints primaryKey="true" primaryKeyName="pessoa_fisica_id_pk"/>-->
+            <!--</column>-->
 
-    <changeSet id="createTableTelefonePessoaFisica" author="pitro">
-        <createTable tableName="pessoa_telefone">
-            <column name="id" type="uuid">
-                <constraints
-                        primaryKey="true"
-                        primaryKeyName="pessoa_telefone_id_pk"/>
-            </column>
-            <column name="numero" type="varchar(20)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="ddd" type="varchar(2)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="tipo" type="varchar(25)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="pessoa_id" type="uuid">
-                <constraints
-                        nullable="false"
-                        referencedTableName="pessoa_fisica"
-                        referencedColumnNames="id"
-                        foreignKeyName="pessoa_telefone_pessoa_fk"/>
-            </column>
-        </createTable>
-    </changeSet>
+            <!--<column name="tipo" type="varchar(30)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
 
-    <!-- ====================================================================================== -->
+            <!--<column name="nome" type="varchar(100)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
 
-    <changeSet id="createTableDocumento" author="pietro">
-        <createTable tableName="documento">
-            <column name="id" type="uuid">
-                <constraints primaryKeyName="documento_id_pk" primaryKey="true"/>
-            </column>
-            <column name="tipo" type="varchar(20)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="numero" type="varchar(25)">
-                <constraints nullable="false" unique="true"/>
-            </column>
-            <column name="pessoa_id" type="uuid">
-                <constraints
-                        nullable="false"
-                        referencedTableName="pessoa_fisica"
-                        referencedColumnNames="id"
-                        foreignKeyName="pessoa_telefone_pessoa_fk"/>
-            </column>
-        </createTable>
-    </changeSet>
+            <!--<column name="data_nascimento" type="date">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
 
-    <changeSet id="createTableDocumentoCpf" author="pietro">
-        <createTable tableName="documento_cpf">
-            <column name="id" type="uuid">
-                <constraints
-                        primaryKey="true"
-                        primaryKeyName="documento_cpf_id_pk"
-                        foreignKeyName="documento_cpf_id_fk"
-                        referencedTableName="documento"
-                        referencedColumnNames="id"/>
-            </column>
-        </createTable>
-    </changeSet>
+            <!--<column name="genero" type="varchar(15)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
 
-    <changeSet id="createTableDocumentoCartaoSus" author="pietro">
-        <createTable tableName="documento_cartao_sus">
-            <column name="id" type="uuid">
-                <constraints
-                        primaryKey="true"
-                        primaryKeyName="documento_cartao_sus_id_pk"
-                        foreignKeyName="documento_cartao_sus_id_fk"
-                        referencedTableName="documento"
-                        referencedColumnNames="id"/>
-            </column>
-        </createTable>
-    </changeSet>
+            <!--<column name="estado_civil" type="varchar(13)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
 
-    <changeSet id="createTableDocumentoRg" author="pietro">
-        <createTable tableName="documento_rg">
-            <column name="id" type="uuid">
-                <constraints
-                        primaryKey="true"
-                        primaryKeyName="documento_rg_id_pk"
-                        foreignKeyName="documento_rg_id_fk"
-                        referencedTableName="documento"
-                        referencedColumnNames="id"/>
-            </column>
-        </createTable>
-    </changeSet>
+            <!--<column name="etnia" type="varchar(20)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
 
-    <!-- ====================================================================================== -->
+            <!--<column name="nome_responsavel" type="varchar(100)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
 
-    <changeSet id="createTableFisioterapeuta" author="pietro">
-        <createTable tableName="fisioterapeuta">
+            <!--<column name="nome_mae" type="varchar(100)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
 
-            <column name="id" type="uuid">
-                <constraints
-                        primaryKey="true"
-                        primaryKeyName="fisioterapeuta_id_pk"
-                        foreignKeyName="fisioterapeuta_id_fk"
-                        referencedTableName="pessoa_fisica"
-                        referencedColumnNames="id"/>
-            </column>
+            <!--<column name="email" type="varchar(100)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
 
-            <column name="especialidade" type="varchar(20)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="crefito" type="varchar(15)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="active" type="boolean" defaultValueBoolean="true"/>
-        </createTable>
-    </changeSet>
-
-    <!-- ====================================================================================== -->
-
-    <changeSet id="createTableAluno" author="pietro">
-        <createTable tableName="aluno">
-            <column name="id" type="uuid">
-                <constraints
-                        primaryKey="true"
-                        primaryKeyName="aluno_id_pk"
-                        foreignKeyName="aluno_id_fk"
-                        referencedTableName="pessoa_fisica"
-                        referencedColumnNames="id"/>
-            </column>
-            <column name="ra" type="char(12)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="curso" type="char(11)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="coordenador" type="char(11)">
-                <constraints nullable="false"/>
-            </column>
-
-        </createTable>
-    </changeSet>
-
-    <!-- ====================================================================================== -->
-
-    <changeSet id="createTablePaciente" author="pietro">
-        <createTable tableName="paciente">
-            <column name="id" type="uuid">
-                <constraints
-                        primaryKey="true"
-                        primaryKeyName="paciente_id_pk"
-                        foreignKeyName="paciente_id_fk"
-                        referencedTableName="pessoa_fisica"
-                        referencedColumnNames="id"/>
-            </column>
-
-            <column name="convenio" type="varchar(25)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="observacoes" type="text"/>
-
-        </createTable>
-    </changeSet>
-
-    <changeSet id="createTableCurso" author="pietro">
-        <createTable tableName="curso">
-            <column name="id" type="uuid">
-                <constraints primaryKey="true" primaryKeyName="curso_id_pk"/>
-            </column>
-            <column name="nome" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
+        <!--</createTable>-->
+    <!--</changeSet>-->
 
 
+    <!--<changeSet id="createTableEnderecoPessoaFisica" author="pietro">-->
+        <!--<createTable tableName="pessoa_endereco">-->
 
-</databaseChangeLog>
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints primaryKey="true" primaryKeyName="pessoa_endereco_id_pk"/>-->
+            <!--</column>-->
+            <!--<column name="cep" type="char(8)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="logradouro" type="varchar(200)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="numero" type="varchar(20)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="bairro" type="varchar(50)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="uf" type="char(2)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="cidade" type="varchar(50)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="complemento" type="varchar(25)">-->
+                <!--<constraints nullable="true"/>-->
+            <!--</column>-->
+            <!--<column name="pessoa_id" type="uuid">-->
+                <!--<constraints-->
+                        <!--nullable="false"-->
+                        <!--referencedTableName="pessoa_fisica"-->
+                        <!--referencedColumnNames="id"-->
+                        <!--foreignKeyName="pessoa_endereco_pessoa_fk"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
+
+
+    <!--<changeSet id="createTableTelefonePessoaFisica" author="pitro">-->
+        <!--<createTable tableName="pessoa_telefone">-->
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints-->
+                        <!--primaryKey="true"-->
+                        <!--primaryKeyName="pessoa_telefone_id_pk"/>-->
+            <!--</column>-->
+            <!--<column name="numero" type="varchar(20)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="ddd" type="varchar(2)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="tipo" type="varchar(25)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="pessoa_id" type="uuid">-->
+                <!--<constraints-->
+                        <!--nullable="false"-->
+                        <!--referencedTableName="pessoa_fisica"-->
+                        <!--referencedColumnNames="id"-->
+                        <!--foreignKeyName="pessoa_telefone_pessoa_fk"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
+
+    <!--&lt;!&ndash; ====================================================================================== &ndash;&gt;-->
+
+    <!--<changeSet id="createTableDocumento" author="pietro">-->
+        <!--<createTable tableName="documento">-->
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints primaryKeyName="documento_id_pk" primaryKey="true"/>-->
+            <!--</column>-->
+            <!--<column name="tipo" type="varchar(20)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="numero" type="varchar(25)">-->
+                <!--<constraints nullable="false" unique="true"/>-->
+            <!--</column>-->
+            <!--<column name="pessoa_id" type="uuid">-->
+                <!--<constraints-->
+                        <!--nullable="false"-->
+                        <!--referencedTableName="pessoa_fisica"-->
+                        <!--referencedColumnNames="id"-->
+                        <!--foreignKeyName="pessoa_telefone_pessoa_fk"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
+
+    <!--<changeSet id="createTableDocumentoCpf" author="pietro">-->
+        <!--<createTable tableName="documento_cpf">-->
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints-->
+                        <!--primaryKey="true"-->
+                        <!--primaryKeyName="documento_cpf_id_pk"-->
+                        <!--foreignKeyName="documento_cpf_id_fk"-->
+                        <!--referencedTableName="documento"-->
+                        <!--referencedColumnNames="id"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
+
+    <!--<changeSet id="createTableDocumentoCartaoSus" author="pietro">-->
+        <!--<createTable tableName="documento_cartao_sus">-->
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints-->
+                        <!--primaryKey="true"-->
+                        <!--primaryKeyName="documento_cartao_sus_id_pk"-->
+                        <!--foreignKeyName="documento_cartao_sus_id_fk"-->
+                        <!--referencedTableName="documento"-->
+                        <!--referencedColumnNames="id"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
+
+    <!--<changeSet id="createTableDocumentoRg" author="pietro">-->
+        <!--<createTable tableName="documento_rg">-->
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints-->
+                        <!--primaryKey="true"-->
+                        <!--primaryKeyName="documento_rg_id_pk"-->
+                        <!--foreignKeyName="documento_rg_id_fk"-->
+                        <!--referencedTableName="documento"-->
+                        <!--referencedColumnNames="id"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
+
+    <!--&lt;!&ndash; ====================================================================================== &ndash;&gt;-->
+
+    <!--<changeSet id="createTableFisioterapeuta" author="pietro">-->
+        <!--<createTable tableName="fisioterapeuta">-->
+
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints-->
+                        <!--primaryKey="true"-->
+                        <!--primaryKeyName="fisioterapeuta_id_pk"-->
+                        <!--foreignKeyName="fisioterapeuta_id_fk"-->
+                        <!--referencedTableName="pessoa_fisica"-->
+                        <!--referencedColumnNames="id"/>-->
+            <!--</column>-->
+
+            <!--<column name="especialidade" type="varchar(20)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+
+            <!--<column name="crefito" type="varchar(15)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+
+            <!--<column name="active" type="boolean" defaultValueBoolean="true"/>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
+
+    <!--&lt;!&ndash; ====================================================================================== &ndash;&gt;-->
+
+    <!--<changeSet id="createTableAluno" author="pietro">-->
+        <!--<createTable tableName="aluno">-->
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints-->
+                        <!--primaryKey="true"-->
+                        <!--primaryKeyName="aluno_id_pk"-->
+                        <!--foreignKeyName="aluno_id_fk"-->
+                        <!--referencedTableName="pessoa_fisica"-->
+                        <!--referencedColumnNames="id"/>-->
+            <!--</column>-->
+            <!--<column name="ra" type="char(12)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="curso" type="char(11)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="coordenador" type="char(11)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+
+        <!--</createTable>-->
+    <!--</changeSet>-->
+
+    <!--&lt;!&ndash; ====================================================================================== &ndash;&gt;-->
+
+    <!--<changeSet id="createTablePaciente" author="pietro">-->
+        <!--<createTable tableName="paciente">-->
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints-->
+                        <!--primaryKey="true"-->
+                        <!--primaryKeyName="paciente_id_pk"-->
+                        <!--foreignKeyName="paciente_id_fk"-->
+                        <!--referencedTableName="pessoa_fisica"-->
+                        <!--referencedColumnNames="id"/>-->
+            <!--</column>-->
+
+            <!--<column name="convenio" type="varchar(25)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+
+            <!--<column name="observacoes" type="text"/>-->
+
+        <!--</createTable>-->
+    <!--</changeSet>-->
+
+    <!--<changeSet id="createTableCurso" author="pietro">-->
+        <!--<createTable tableName="curso">-->
+            <!--<column name="id" type="uuid">-->
+                <!--<constraints primaryKey="true" primaryKeyName="curso_id_pk"/>-->
+            <!--</column>-->
+            <!--<column name="nome" type="varchar(50)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
+
+        <!--&#45;&#45;-->
+        <!--&#45;&#45;-->
+        <!--&#45;&#45;    &lt;!&ndash; ====================================================================================== &ndash;&gt;-->
+        <!--&#45;&#45;-->
+        <!--&#45;&#45;    <changeSet id="createTablePaciente" author="pietro">-->
+<!--&#45;&#45;        <createTable tableName="paciente">-->
+    <!--&#45;&#45;            <column name="id" type="uuid">-->
+    <!--&#45;&#45;                <constraints-->
+    <!--&#45;&#45;                        primaryKey="true"-->
+    <!--&#45;&#45;                        primaryKeyName="paciente_id_pk"-->
+    <!--&#45;&#45;                        foreignKeyName="paciente_id_fk"-->
+    <!--&#45;&#45;                        referencedTableName="pessoa_fisica"-->
+    <!--&#45;&#45;                        referencedColumnNames="id"/>-->
+    <!--&#45;&#45;            </column>-->
+    <!--&#45;&#45;-->
+    <!--&#45;&#45;            <column name="convenio" type="varchar(25)">-->
+    <!--&#45;&#45;                <constraints nullable="false"/>-->
+    <!--&#45;&#45;            </column>-->
+    <!--&#45;&#45;-->
+    <!--&#45;&#45;            <column name="observacoes" type="text"/>-->
+    <!--&#45;&#45;-->
+    <!--&#45;&#45;        </createTable>-->
+<!--&#45;&#45;    </changeSet>-->
+        <!--&#45;&#45;-->
+        <!--&#45;&#45;    <changeSet id="createTableCurso" author="pietro">-->
+<!--&#45;&#45;        <createTable tableName="curso">-->
+    <!--&#45;&#45;            <column name="id" type="uuid">-->
+    <!--&#45;&#45;                <constraints primaryKey="true" primaryKeyName="curso_id_pk"/>-->
+    <!--&#45;&#45;            </column>-->
+    <!--&#45;&#45;            <column name="nome" type="varchar(50)">-->
+    <!--&#45;&#45;                <constraints nullable="false"/>-->
+    <!--&#45;&#45;            </column>-->
+    <!--&#45;&#45;        </createTable>-->
+<!--&#45;&#45;    </changeSet>-->

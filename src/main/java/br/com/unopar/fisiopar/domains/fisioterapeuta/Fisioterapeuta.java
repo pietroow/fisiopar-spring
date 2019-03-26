@@ -5,7 +5,7 @@ import br.com.unopar.fisiopar.domains.pessoafisica.PessoaFisica;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "fisioterapeuta")
+@Table(name = "fisioterapeuta", schema = "fisiopar")
 @DiscriminatorValue("FISIOTERAPEUTA")
 public class Fisioterapeuta extends PessoaFisica {
 
@@ -17,6 +17,7 @@ public class Fisioterapeuta extends PessoaFisica {
     private String crefito;
 
     private Fisioterapeuta() {
+        super();
     }
 
     public String getCrefito() {

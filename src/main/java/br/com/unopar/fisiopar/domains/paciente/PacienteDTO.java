@@ -5,10 +5,12 @@ import br.com.unopar.fisiopar.domains.pessoafisica.enums.EstadoCivil;
 import br.com.unopar.fisiopar.domains.pessoafisica.enums.Etnia;
 import br.com.unopar.fisiopar.domains.pessoafisica.enums.Genero;
 import com.google.common.collect.Lists;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Getter
 public final class PacienteDTO {
 
     public String nome;
@@ -27,47 +29,4 @@ public final class PacienteDTO {
         endereco = Lists.newArrayList();
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public EstadoCivil getEstadoCivil() {
-        return estadoCivil;
-    }
-
-    public Etnia getEtnia() {
-        return etnia;
-    }
-
-    public String getNomeResponsavel() {
-        return nomeResponsavel;
-    }
-
-    public String getNomeDaMae() {
-        return nomeDaMae;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public List<EnderecoVO> getEndereco() {
-        return endereco;
-    }
-
-    public String getConvenio() {
-        return convenio;
-    }
-
-    public String getObservacoes() {
-        return observacoes;
-    }
 }

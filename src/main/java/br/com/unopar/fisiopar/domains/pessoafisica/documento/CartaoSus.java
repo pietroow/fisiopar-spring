@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue("CARTAO_SUS")
 public class CartaoSus extends Documento {
 
-    private CartaoSus() {
+    public CartaoSus() {
         super();
     }
 

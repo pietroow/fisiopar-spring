@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "paciente")
+@Table(name = "paciente", schema = "fisiopar")
 @DiscriminatorValue("PACIENTE")
 public class Paciente extends PessoaFisica {
 
@@ -18,7 +18,7 @@ public class Paciente extends PessoaFisica {
     @Column(name = "observacoes")
     private String observacoes;
 
-    private Paciente() {
+    public Paciente() {
         super();
     }
 

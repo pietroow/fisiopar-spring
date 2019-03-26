@@ -18,7 +18,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "pessoa_fisica")
+@Table(name = "pessoa_fisica", schema = "fisiopar")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 public abstract class PessoaFisica {
@@ -64,11 +64,11 @@ public abstract class PessoaFisica {
     @Column(name = "email")
     private String email;
 
-    @CollectionTable(joinColumns = @JoinColumn(name = "pessoa_id"), name = "pessoa_endereco")
+    @CollectionTable(joinColumns = @JoinColumn(name = "pessoa_id"), name = "endereco", schema = "fisiopar")
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<EnderecoVO> enderecos;
 
-    @CollectionTable(joinColumns = @JoinColumn(name = "pessoa_id"), name = "pessoa_telefone")
+    @CollectionTable(joinColumns = @JoinColumn(name = "pessoa_id"), name = "telefone", schema = "fisiopar")
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<TelefoneVO> telefones;
 
@@ -80,7 +80,6 @@ public abstract class PessoaFisica {
         this.enderecos = Sets.newHashSet();
         this.telefones = Sets.newHashSet();
         this.documentos = Sets.newHashSet();
-        System.out.println("Construtor chamando super 'PessoaFisica'");
     }
 
     public UUID getId() {

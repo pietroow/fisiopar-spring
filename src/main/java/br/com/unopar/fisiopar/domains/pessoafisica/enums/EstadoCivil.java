@@ -12,4 +12,5 @@ public enum EstadoCivil {
     DIVORCIADA,
     SEPARADO,
     SEPARADA
+
 }

@@ -1,5 +1,7 @@
-package br.com.unopar.fisiopar.domains.fisioterapeuta;
+package br.com.unopar.fisiopar.service;
 
+import br.com.unopar.fisiopar.domains.fisioterapeuta.Fisioterapeuta;
+import br.com.unopar.fisiopar.repository.FisioterapeutaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,7 @@ public class FisioterapeutaService {
     }
 
     public Optional<Fisioterapeuta> findById(UUID id) {
-        return this.fisioterapeutaRepository.findById(id);
+        return fisioterapeutaRepository.findById(id);
     }
 
     public void deleteById(UUID id) {

@@ -11,19 +11,9 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "documento")
+@Table(name = "documento", schema = "fisiopar")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "tipo")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Cpf.class, name = "CPF"),
-        @JsonSubTypes.Type(value = CartaoSus.class, name = "CARTAO_SUS"),
-        @JsonSubTypes.Type(value = Rg.class, name = "RG")
-})
-@ApiModel(subTypes = {Cpf.class, Rg.class, CartaoSus.class}, discriminator = "tipo")
 public abstract class Documento {
 
     @Id

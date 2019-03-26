@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue("RG")
 public class Rg extends Documento{
 
-    private Rg() {
+    public Rg() {
         super();
     }
 

@@ -12,11 +12,12 @@ public class FisioparApplicationTests {
 	@Test
 	public void contextLoads() {
 
-		Aluno instance = Aluno.getInstance();
-		instance.setNome("Pedro");
-
-		System.out.println(instance.getNome());
 
 	}
 
+	@Test
+	public void teste(){
+		System.out.println(Integer.MAX_VALUE);
+		System.out.println(Long.MAX_VALUE);
+	}
 }

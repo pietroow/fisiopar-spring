@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue("CPF")
 public class Cpf extends Documento {
 
-    private Cpf() {
+    public Cpf() {
         super();
     }
 

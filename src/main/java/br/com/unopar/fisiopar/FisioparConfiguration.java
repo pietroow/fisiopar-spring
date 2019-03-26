@@ -20,5 +20,8 @@ public class FisioparConfiguration {
                 .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .build();
     }
+
+
+
 }
 

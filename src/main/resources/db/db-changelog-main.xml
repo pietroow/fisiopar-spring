@@ -1,147 +1,147 @@
-<createTable tableName="aluno">
-    <column name="id" type="uuid">
-        <constraints primaryKey="true" nullable="false"/>
-    </column>
+<!--<createTable tableName="aluno">-->
+    <!--<column name="id" type="uuid">-->
+        <!--<constraints primaryKey="true" nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="matricula" type="int(8)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="matricula" type="int(8)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="nome" type="varchar(100)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="nome" type="varchar(100)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="data_nascimento" type="date">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="data_nascimento" type="date">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="sexo" type="varchar(8)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="sexo" type="varchar(8)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="estado_civil" type="varchar(13)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="estado_civil" type="varchar(13)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="etnia" type="varchar(8)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="etnia" type="varchar(8)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="cpf" type="char(11)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="cpf" type="char(11)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="rg" type="varchar(11)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="rg" type="varchar(11)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="nome_responsavel" type="char(11)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="nome_responsavel" type="char(11)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="nome_mae" type="varchar(100)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="nome_mae" type="varchar(100)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="email" type="varchar(100)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="email" type="varchar(100)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="telefone" type="char(11)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="telefone" type="char(11)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="endereco_id" type="uuid">
-        <constraints nullable="false" foreignKeyName="endereco_id"
-                     references="endereco(id)"/>
-    </column>
+    <!--<column name="endereco_id" type="uuid">-->
+        <!--<constraints nullable="false" foreignKeyName="endereco_id"-->
+                     <!--references="endereco(id)"/>-->
+    <!--</column>-->
 
-    <column name="ra" type="char(12)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="ra" type="char(12)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="curso" type="varchar(50)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="curso" type="varchar(50)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="coordenador" type="varchar(100)">
-        <constraints nullable="false"/>
-    </column>
+    <!--<column name="coordenador" type="varchar(100)">-->
+        <!--<constraints nullable="false"/>-->
+    <!--</column>-->
 
-    <column name="active" type="boolean" defaultValueBoolean="true"/>
-</createTable>
+    <!--<column name="active" type="boolean" defaultValueBoolean="true"/>-->
+<!--</createTable>-->
 
-<createTable tableName="paciente">
-<column name="id" type="uuid">
-    <constraints primaryKey="true" nullable="false"/>
-</column>
+<!--<createTable tableName="paciente">-->
+<!--<column name="id" type="uuid">-->
+    <!--<constraints primaryKey="true" nullable="false"/>-->
+<!--</column>-->
 
-<column name="matricula" type="int(8)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="matricula" type="int(8)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="nome" type="varchar(100)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="nome" type="varchar(100)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="data_nascimento" type="date">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="data_nascimento" type="date">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="sexo" type="varchar(8)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="sexo" type="varchar(8)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="estado_civil" type="varchar(13)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="estado_civil" type="varchar(13)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="etnia" type="varchar(8)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="etnia" type="varchar(8)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="cpf" type="char(11)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="cpf" type="char(11)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="rg" type="varchar(11)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="rg" type="varchar(11)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="nome_responsavel" type="char(11)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="nome_responsavel" type="char(11)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="nome_mae" type="varchar(100)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="nome_mae" type="varchar(100)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="email" type="varchar(100)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="email" type="varchar(100)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="telefone" type="char(11)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="telefone" type="char(11)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="endereco_id" type="uuid">
-    <constraints nullable="false" foreignKeyName="endereco_id"
-                 references="endereco(id)"/>
-</column>
+<!--<column name="endereco_id" type="uuid">-->
+    <!--<constraints nullable="false" foreignKeyName="endereco_id"-->
+                 <!--references="endereco(id)"/>-->
+<!--</column>-->
 
-<column name="ra" type="char(12)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="ra" type="char(12)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="curso" type="varchar(50)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="curso" type="varchar(50)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
-<column name="coordenador" type="varchar(100)">
-    <constraints nullable="false"/>
-</column>
+<!--<column name="coordenador" type="varchar(100)">-->
+    <!--<constraints nullable="false"/>-->
+<!--</column>-->
 
 
 
-<column name="active" type="boolean" defaultValueBoolean="true"/>
-</createTable>
+<!--<column name="active" type="boolean" defaultValueBoolean="true"/>-->
+<!--</createTable>-->

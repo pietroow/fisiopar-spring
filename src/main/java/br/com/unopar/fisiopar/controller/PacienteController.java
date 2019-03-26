@@ -1,25 +1,25 @@
-package br.com.unopar.fisiopar.domains.paciente;
+package br.com.unopar.fisiopar.controller;
 
+import br.com.unopar.fisiopar.domains.paciente.Paciente;
+import br.com.unopar.fisiopar.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/paciente")
+@RequestMapping("/api/paciente")
 public class PacienteController {
 
     @Autowired
-    PacienteService pacienteService;
+    private PacienteService pacienteService;
 
     @PostMapping
-    public ResponseEntity cadastrar(@RequestBody Paciente paciente2) {
-        Paciente paciente = this.pacienteService.save(paciente2);
-        return new ResponseEntity(paciente, HttpStatus.CREATED);
+    public Paciente save(@RequestBody Paciente paciente){
+        return pacienteService.save(paciente);
     }
 
     @GetMapping("/{id}")

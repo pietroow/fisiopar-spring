@@ -1,5 +1,7 @@
-package br.com.unopar.fisiopar.domains.fisioterapeuta;
+package br.com.unopar.fisiopar.controller;
 
+import br.com.unopar.fisiopar.domains.fisioterapeuta.Fisioterapeuta;
+import br.com.unopar.fisiopar.service.FisioterapeutaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -12,24 +12,33 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "documento", schema = "fisiopar")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
-public abstract class Documento {
+public class Documento {
 
     @Id
     @Column(name = "id")
     @ApiModelProperty(hidden = true)
     private UUID id;
 
+    @Column(name = "tipo")
+    private String tipo;
+
     @Column(name = "numero")
     private String numero;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pessoa_id")
+    @JoinColumn(name = "pessoa_fk")
     private PessoaFisica pessoa;
 
     public Documento() {
         this.id = UUID.randomUUID();
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getNumero() {

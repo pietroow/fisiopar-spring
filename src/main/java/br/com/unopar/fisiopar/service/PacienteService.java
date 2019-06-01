@@ -15,7 +15,7 @@ public class PacienteService {
     private PacienteRepository pacienteRepository;
 
     public Paciente save(Paciente paciente) {
-//        paciente.getDocumentos().forEach(documento -> documento.setPessoa(paciente));
+        paciente.getDocumentos().forEach(documento -> documento.setPessoa(paciente));
         return pacienteRepository.save(paciente);
     }
 

@@ -2,6 +2,9 @@ server:
   port: 8090
 
 spring:
+#  profiles:
+#    active: oauth-security
+
   security:
     user:
       name: fisiopar

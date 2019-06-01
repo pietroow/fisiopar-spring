@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface FisioterapeutaRepository extends PagingAndSortingRepository<Fisioterapeuta, UUID> {
+
 }

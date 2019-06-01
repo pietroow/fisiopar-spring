@@ -72,7 +72,7 @@ public abstract class PessoaFisica {
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<TelefoneVO> telefones;
 
-    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
     private Set<Documento> documentos;
 
     public PessoaFisica() {

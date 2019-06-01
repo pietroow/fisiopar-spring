@@ -14,7 +14,7 @@ import java.util.UUID;
 public class FisioterapeutaService {
 
     @Autowired
-    FisioterapeutaRepository fisioterapeutaRepository;
+    private FisioterapeutaRepository fisioterapeutaRepository;
 
     public Fisioterapeuta save(Fisioterapeuta fisioterapeuta) {
         fisioterapeuta.getDocumentos().forEach(documento -> documento.setPessoa(fisioterapeuta));

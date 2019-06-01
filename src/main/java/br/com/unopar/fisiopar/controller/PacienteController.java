@@ -2,6 +2,8 @@ package br.com.unopar.fisiopar.controller;
 
 import br.com.unopar.fisiopar.domains.paciente.Paciente;
 import br.com.unopar.fisiopar.service.PacienteService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -15,7 +15,7 @@ import java.util.UUID;
 public class FisioterapeutaController {
 
     @Autowired
-    FisioterapeutaService fisioterapeutaService;
+    private FisioterapeutaService fisioterapeutaService;
 
     @PostMapping
     public ResponseEntity cadastrar(@RequestBody Fisioterapeuta fisioterapeuta) {

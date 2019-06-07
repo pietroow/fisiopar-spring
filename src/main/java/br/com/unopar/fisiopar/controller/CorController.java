@@ -1,9 +1,11 @@
 package br.com.unopar.fisiopar.controller;
 
 import br.com.unopar.fisiopar.domains.Cor;
+import br.com.unopar.fisiopar.domains.EnderecoCorreioDTO;
 import br.com.unopar.fisiopar.service.CorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,8 +33,15 @@ public class CorController {
         return corService.findById(id);
     }
 
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id")UUID id){
         corService.deleteById(id);
     }
+
+    @GetMapping("/busca/{cep}")
+    public EnderecoCorreioDTO hue(@PathVariable("cep") String cep){
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(String.format("https://viacep.com.br/ws/%s/json/", cep), EnderecoCorreioDTO.class);
+    }
+
 }

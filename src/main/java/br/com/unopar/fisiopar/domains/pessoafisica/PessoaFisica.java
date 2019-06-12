@@ -7,6 +7,7 @@ import br.com.unopar.fisiopar.domains.pessoafisica.enums.Genero;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.collect.Sets;
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -33,7 +34,7 @@ public abstract class PessoaFisica {
     private String nome;
 
     @NotNull
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 

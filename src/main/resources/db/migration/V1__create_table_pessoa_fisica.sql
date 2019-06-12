@@ -32,3 +32,9 @@ convenio CHAR(12) NOT NULL,
 observacoes CHAR(11) NOT NULL,
 FOREIGN KEY (id) REFERENCES pessoa_fisica(id)
 );
+
+INSERT INTO pessoa_fisica (id, tipo, nome, data_nascimento, genero, estado_civil, etnia, nome_responsavel, nome_mae, email)
+values ('30f6e9aa-c056-4522-ab22-6c2b84b210b1', 'FISIOTERAPEUTA', 'Victor Pietro', '1995-06-07', 'MASCULINO', 'SOLTEIRO', 'BRANCO', '', 'Silvie Mantovani', 'victor_pietro@hotmail.com');
+
+INSERT INTO fisioterapeuta(id, especialidade, crefito) values ('30f6e9aa-c056-4522-ab22-6c2b84b210b1', 'ORTOPEDIA', '106969');
+

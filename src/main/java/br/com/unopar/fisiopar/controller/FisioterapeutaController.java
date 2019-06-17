@@ -2,9 +2,11 @@ package br.com.unopar.fisiopar.controller;
 
 import br.com.unopar.fisiopar.domains.fisioterapeuta.Fisioterapeuta;
 import br.com.unopar.fisiopar.service.FisioterapeutaService;
+import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,7 @@ public class FisioterapeutaController {
 
     @GetMapping
     @PreAuthorize("hasAuthority('ROLE_PESQUISAR_FISIOTERAPEUTA') and #oauth2.hasScope('read')")
+    @ApiImplicitParam(name = "Authorization", required = true, dataType = "string", paramType = "header")
     public Iterable<Fisioterapeuta> findAll() {
         return this.fisioterapeutaService.findAll();
     }

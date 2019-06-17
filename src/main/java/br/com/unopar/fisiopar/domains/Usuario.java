@@ -73,4 +73,9 @@ public class Usuario {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public UsuarioDTO getUserSimplified(){
+        return new UsuarioDTO(this.id, this.nome, this.email);
+    }
+
 }

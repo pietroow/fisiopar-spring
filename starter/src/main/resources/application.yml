@@ -1,0 +1,35 @@
+server:
+  port: 8050
+
+spring:
+  security:
+    user:
+      name: fisiopar
+      password: ads@00
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fisiopar
+    username: fisiopar
+    password: ads@00
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    properties:
+      hibernate.hbm2ddl.auto: none
+      hibernate.temp.use_jdbc_metadata_defaults: false
+      hibernate.jdbc.lob.non_contextual_creation: true
+
+  flyway:
+    url: jdbc:postgresql://localhost:5432/fisiopar
+    driver: org.postgresql.Driver
+    user: fisiopar
+    password: ads@00
+    baselineOnMigrate: true
+    schemas: fisiopar
+    table: flyway_schema_history
+    locations: classpath:db/migration
